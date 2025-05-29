@@ -16,4 +16,5 @@
 
 <resources>
     <string name="app_name">Nav3Recipes</string>
+    <string name="title_activity_launcher">Activity Catalog</string>
 </resources>
