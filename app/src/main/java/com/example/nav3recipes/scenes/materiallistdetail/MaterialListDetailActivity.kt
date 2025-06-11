@@ -19,7 +19,6 @@ package com.example.nav3recipes.scenes.materiallistdetail
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -36,6 +35,7 @@ import com.example.nav3recipes.content.ContentBlue
 import com.example.nav3recipes.content.ContentGreen
 import com.example.nav3recipes.content.ContentRed
 import com.example.nav3recipes.content.ContentYellow
+import com.example.nav3recipes.ui.setEdgeToEdgeConfig
 import kotlinx.serialization.Serializable
 
 /**
@@ -44,19 +44,19 @@ import kotlinx.serialization.Serializable
  * the content for these destinations will be shown in a two pane layout.
  */
 @Serializable
-object ConversationList : NavKey
+private object ConversationList : NavKey
 
 @Serializable
-data class ConversationDetail(val id: String) : NavKey
+private data class ConversationDetail(val id: String) : NavKey
 
 @Serializable
-data object Profile : NavKey
+private data object Profile : NavKey
 
 class MaterialListDetailActivity : ComponentActivity() {
 
     @OptIn(ExperimentalMaterial3AdaptiveApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
-        enableEdgeToEdge()
+        setEdgeToEdgeConfig()
         super.onCreate(savedInstanceState)
 
         setContent {

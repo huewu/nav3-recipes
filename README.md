@@ -19,6 +19,10 @@ These are the recipes and what they demonstrate.
 - **[Common navigation UI](app/src/main/java/com/example/nav3recipes/commonui)**: A common navigation toolbar where each item in the toolbar navigates to a top level destination.
 - **[Conditional navigation](app/src/main/java/com/example/nav3recipes/conditional)**: Switch to a different navigation flow when a condition is met. For example, for authentication or first-time user onboarding.
 
+**Passing navigation arguments to ViewModels**
+- **[Basic ViewModel](app/src/main/java/com/example/nav3recipes/passingarguments/basicviewmodels)**: Navigation arguments are passed to a ViewModel constructed using `viewModel()`
+- **[Hilt injected ViewModel](app/src/main/java/com/example/nav3recipes/passingarguments/injectedviewmodels)**: Navigation arguments are passed to a ViewModel constructed using `hiltViewModel()`
+
 **Planned**
 - **Deeplinks**: Create and handle deeplinks to specific destinations
 - **Android XR**: Custom navigation and layout behavior for Android XR
@@ -31,6 +35,9 @@ The following is a screen recording showing the navigation behavior of a [custom
 
 ## Instructions
 Clone this repository and open the root folder in [Android Studio](https://developer.android.com/studio). Each recipe is contained in its own package with its own `Activity`.
+
+## Found an issue?
+If the issue is _directly related to this project_, as in, it's reproducible without modifying this project's source code, then please [file an issue on github](https://github.com/android/nav3-recipes/issues/new). If you've found an issue with the Jetpack Navigation 3 library, please [file an issue on the issue tracker](https://issuetracker.google.com/issues/new?component=1750212&template=2102223).
 
 ## Contributing
 We'd love to accept your contributions. Please follow [these instructions](CONTRIBUTING.md).
