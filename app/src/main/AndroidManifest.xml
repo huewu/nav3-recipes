@@ -85,6 +85,10 @@
             android:name=".passingarguments.injectedviewmodels.InjectedViewModelsActivity"
             android:exported="true"
             android:theme="@style/Theme.Nav3Recipes"/>
+        <activity
+            android:name=".commonui.Nav2CommonUiActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Nav3Recipes"/>
     </application>
 
 </manifest>

@@ -24,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.nav3recipes.animations.AnimatedActivity
 import com.example.nav3recipes.basic.BasicActivity
+import com.example.nav3recipes.commonui.Nav2CommonUiActivity
 import com.example.nav3recipes.basicdsl.BasicDslActivity
 import com.example.nav3recipes.basicsaveable.BasicSaveableActivity
 import com.example.nav3recipes.commonui.CommonUiActivity
@@ -47,11 +48,12 @@ private val recipes = listOf(
     Recipe("Basic DSL", BasicDslActivity::class.java),
     Recipe("Basic Saveable", BasicSaveableActivity::class.java),
     Recipe("Animations", AnimatedActivity::class.java),
+    Recipe("Nav2 Common UI", Nav2CommonUiActivity::class.java),
     Recipe("Conditional navigation", ConditionalActivity::class.java),
     Recipe("Common UI", CommonUiActivity::class.java),
     Recipe("Material list-detail layout", MaterialListDetailActivity::class.java),
     Recipe("Two pane layout", TwoPaneActivity::class.java),
-    Recipe("Argument passing to basic ViewModel", BasicViewModelsActivity::class.java),
+    Recipe("Argument passing to basic ViewModel", BasicViewModelsActivity::class.java), // Keep this line for now
     Recipe("Argument passing to injected ViewModel", InjectedViewModelsActivity::class.java)
 )
 
