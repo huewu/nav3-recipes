@@ -19,7 +19,6 @@ package com.example.nav3recipes.basic
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.mutableStateListOf
@@ -28,20 +27,21 @@ import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.ui.NavDisplay
 import com.example.nav3recipes.content.ContentBlue
 import com.example.nav3recipes.content.ContentGreen
+import com.example.nav3recipes.ui.setEdgeToEdgeConfig
 
 /**
  * Basic example with two screens, showing how to use the Navigation 3 API.
  */
 
-data object RouteA
+private data object RouteA
 
-data class RouteB(val id: String)
+private data class RouteB(val id: String)
 
 // This is the main Activity that hosts our Navigation 3 setup.
 class BasicActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        enableEdgeToEdge()
+        setEdgeToEdgeConfig()
         super.onCreate(savedInstanceState)
         setContent {
             // `backStack` is a MutableStateList that represents the current navigation stack.

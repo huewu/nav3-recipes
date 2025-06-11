@@ -19,7 +19,6 @@ package com.example.nav3recipes.basicsaveable
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.navigation3.runtime.NavEntry
@@ -28,6 +27,7 @@ import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
 import com.example.nav3recipes.content.ContentBlue
 import com.example.nav3recipes.content.ContentGreen
+import com.example.nav3recipes.ui.setEdgeToEdgeConfig
 import kotlinx.serialization.Serializable
 
 /**
@@ -38,15 +38,15 @@ import kotlinx.serialization.Serializable
  */
 
 @Serializable
-data object RouteA : NavKey
+private data object RouteA : NavKey
 
 @Serializable
-data class RouteB(val id: String) : NavKey
+private data class RouteB(val id: String) : NavKey
 
 class BasicSaveableActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        enableEdgeToEdge()
+        setEdgeToEdgeConfig()
         super.onCreate(savedInstanceState)
         setContent {
             val backStack = rememberNavBackStack(RouteA)

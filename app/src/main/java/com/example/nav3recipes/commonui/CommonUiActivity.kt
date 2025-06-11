@@ -19,9 +19,6 @@ package com.example.nav3recipes.commonui
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Home
@@ -38,7 +35,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.SnapshotStateList
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation3.runtime.entry
 import androidx.navigation3.runtime.entryProvider
@@ -47,7 +43,7 @@ import com.example.nav3recipes.content.ContentBlue
 import com.example.nav3recipes.content.ContentGreen
 import com.example.nav3recipes.content.ContentPurple
 import com.example.nav3recipes.content.ContentRed
-import com.example.nav3recipes.ui.theme.PastelPurple
+import com.example.nav3recipes.ui.setEdgeToEdgeConfig
 
 /**
  * Common navigation UI example. This app has three top level routes: Home, ChatList and Camera.
@@ -62,19 +58,19 @@ import com.example.nav3recipes.ui.theme.PastelPurple
  * back from a single remaining top level route in the back stack.
  */
 
-interface TopLevelRoute {
+private sealed interface TopLevelRoute {
     val icon: ImageVector
 }
-data object Home : TopLevelRoute { override val icon = Icons.Default.Home }
-data object ChatList : TopLevelRoute { override val icon = Icons.Default.Face }
-data object ChatDetail
-data object Camera : TopLevelRoute { override val icon = Icons.Default.PlayArrow }
+private data object Home : TopLevelRoute { override val icon = Icons.Default.Home }
+private data object ChatList : TopLevelRoute { override val icon = Icons.Default.Face }
+private data object ChatDetail
+private data object Camera : TopLevelRoute { override val icon = Icons.Default.PlayArrow }
 
-val TOP_LEVEL_ROUTES : List<TopLevelRoute> = listOf(Home, ChatList, Camera)
+private val TOP_LEVEL_ROUTES : List<TopLevelRoute> = listOf(Home, ChatList, Camera)
 
 class CommonUiActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        enableEdgeToEdge()
+        setEdgeToEdgeConfig()
         super.onCreate(savedInstanceState)
         setContent {
             val topLevelBackStack = remember { TopLevelBackStack<Any>(Home) }
@@ -100,7 +96,7 @@ class CommonUiActivity : ComponentActivity() {
                         }
                     }
                 }
-            ) { contentPadding ->
+            ) { _ ->
                 NavDisplay(
  // NavDisplay는 Navigation 3 라이브러리의 핵심 Composable입니다.
  // 이 Composable은 현재 백 스택을 기반으로 적절한 UI를 표시합니다.
@@ -126,7 +122,6 @@ class CommonUiActivity : ComponentActivity() {
                             ContentPurple("Camera screen")
                         }
                     },
-                    modifier = Modifier.consumeWindowInsets(contentPadding)
                 )
             }
         }

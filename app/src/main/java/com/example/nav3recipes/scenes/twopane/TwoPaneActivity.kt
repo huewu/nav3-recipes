@@ -19,7 +19,6 @@ package com.example.nav3recipes.scenes.twopane
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionLayout
 import androidx.compose.animation.SharedTransitionScope
@@ -47,6 +46,7 @@ import androidx.navigation3.ui.rememberSceneSetupNavEntryDecorator
 import com.example.nav3recipes.content.ContentBase
 import com.example.nav3recipes.content.ContentGreen
 import com.example.nav3recipes.content.ContentRed
+import com.example.nav3recipes.ui.setEdgeToEdgeConfig
 import com.example.nav3recipes.ui.theme.colors
 import kotlinx.serialization.Serializable
 
@@ -63,17 +63,17 @@ import kotlinx.serialization.Serializable
  * @see `TwoPaneScene`
  */
 @Serializable
-object Home : NavKey
+private object Home : NavKey
 @Serializable
-data class Product(val id: Int) : NavKey
+private data class Product(val id: Int) : NavKey
 @Serializable
-data object Profile : NavKey
+private data object Profile : NavKey
 
 class TwoPaneActivity : ComponentActivity() {
 
     @OptIn(ExperimentalSharedTransitionApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
-        enableEdgeToEdge()
+        setEdgeToEdgeConfig()
         super.onCreate(savedInstanceState)
 
         setContent {
@@ -90,15 +90,15 @@ class TwoPaneActivity : ComponentActivity() {
              * A [NavEntryDecorator] that wraps each entry in a shared element that is controlled by the
              * [Scene].
              */
-            val sharedEntryInSceneNavEntryDecorator = navEntryDecorator { entry ->
+            val sharedEntryInSceneNavEntryDecorator = navEntryDecorator<NavKey> { entry ->
                 with(localNavSharedTransitionScope.current) {
                     Box(
                         Modifier.sharedElement(
-                            rememberSharedContentState(entry.key),
+                            rememberSharedContentState(entry.contentKey),
                             animatedVisibilityScope = LocalNavAnimatedContentScope.current,
                         ),
                     ) {
-                        entry.content(entry.key)
+                        entry.Content()
                     }
                 }
             }
