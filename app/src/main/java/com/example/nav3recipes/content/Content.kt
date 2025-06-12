@@ -48,47 +48,6 @@ import com.example.nav3recipes.ui.theme.PastelPurple
 import com.example.nav3recipes.ui.theme.PastelRed
 import com.example.nav3recipes.ui.theme.PastelYellow
 
-
-@Composable
-fun ContentA(onNext: () -> Unit) = ContentBase(
-    title = "Content A Title",
-    modifier = Modifier.background(PastelRed),
-    onNext = onNext,
-) {
-    Text(
-        modifier =
-            Modifier.padding(16.dp),
-        text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend dui non orci eleifend bibendum. Nulla varius ultricies dolor sit amet semper. Sed accumsan, dolor id finibus rhoncus, nisi nibh suscipit augue, vitae gravida dui justo et ex. Maecenas eget suscipit lacus. Mauris ac rhoncus lacus. Suspendisse placerat eleifend magna at ornare. Duis efficitur euismod felis, vel porttitor eros hendrerit nec."
-    )
-}
-
-@Composable
-fun ContentB() = ContentBase(
-    title = "Content B Title",
-    modifier = Modifier.background(PastelGreen)
-) {
-    Text(
-        modifier =
-            Modifier.padding(16.dp),
-        text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend dui non orci eleifend bibendum. Nulla varius ultricies dolor sit amet semper. Sed accumsan, dolor id finibus rhoncus, nisi nibh suscipit augue, vitae gravida dui justo et ex. Maecenas eget suscipit lacus. Mauris ac rhoncus lacus. Suspendisse placerat eleifend magna at ornare. Duis efficitur euismod felis, vel porttitor eros hendrerit nec."
-    )
-}
-
-@Composable
-fun SampleContent(title: String, backgroundColor: Color, onNext: (() -> Unit)? = null) =
-    ContentBase(
-        title = title,
-        modifier = Modifier.background(backgroundColor),
-        onNext = onNext,
-    ) {
-        Text(
-            modifier =
-                Modifier.padding(16.dp),
-            text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend dui non orci eleifend bibendum. Nulla varius ultricies dolor sit amet semper. Sed accumsan, dolor id finibus rhoncus, nisi nibh suscipit augue, vitae gravida dui justo et ex. Maecenas eget suscipit lacus. Mauris ac rhoncus lacus. Suspendisse placerat eleifend magna at ornare. Duis efficitur euismod felis, vel porttitor eros hendrerit nec."
-        )
-    }
-
-
 @OptIn(ExperimentalSharedTransitionApi::class)
 @Composable
 fun ContentBase(
@@ -129,14 +88,6 @@ fun ColumnScope.Title(title: String) {
 }
 
 @Composable
-@Preview
-fun ContentAPreview() {
-    Nav3RecipesTheme {
-        ContentA({})
-    }
-}
-
-@Composable
 fun Count(name: String) {
     var count: Int by rememberSaveable { mutableIntStateOf(0) }
     Column {
@@ -146,7 +97,6 @@ fun Count(name: String) {
         }
     }
 }
-
 
 @Composable
 fun ContentRed(

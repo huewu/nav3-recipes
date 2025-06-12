@@ -15,9 +15,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.nav3recipes.content.ContentA
-import com.example.nav3recipes.content.ContentB
-import com.example.nav3recipes.content.SampleContent
+import com.example.nav3recipes.content.ContentGreen
+import com.example.nav3recipes.content.ContentPurple
+import com.example.nav3recipes.content.ContentRed
 import com.example.nav3recipes.ui.theme.Nav3RecipesTheme
 
 class Nav2CommonUiActivity : ComponentActivity() {
@@ -31,10 +31,10 @@ class Nav2CommonUiActivity : ComponentActivity() {
     }
 }
 
-sealed class Screen(val route: String, val icon: ImageVector, val label: String) {
-    object Home : Screen("home", Icons.Filled.Home, "Home")
-    object Library : Screen("library", Icons.Filled.Face, "Library")
-    object Settings : Screen("settings", Icons.Filled.PlayArrow, "Settings")
+sealed class Screen(val route: String, val icon: ImageVector) {
+    object Home : Screen("home", Icons.Filled.Home)
+    object ChatList : Screen("ChatList", Icons.Default.Face)
+    object Camera : Screen("Camera", Icons.Default.PlayArrow)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -46,8 +46,8 @@ fun Nav2CommonUiScreen() {
 
     val bottomNavigationItems = listOf(
         Screen.Home,
-        Screen.Library,
-        Screen.Settings
+        Screen.ChatList,
+        Screen.Camera
     )
 
     Scaffold(
@@ -56,7 +56,7 @@ fun Nav2CommonUiScreen() {
                 bottomNavigationItems.forEach { screen ->
                     NavigationBarItem(
                         icon = { Icon(screen.icon, contentDescription = null) },
-                        label = { Text(screen.label) },
+                        label = { Text(screen.route) },
                         selected = currentRoute == screen.route,
                         onClick = {
                             if (currentRoute != screen.route) {
@@ -78,19 +78,23 @@ fun Nav2CommonUiScreen() {
                 }
             }
         }
-    ) { paddingValues ->
+    ) { _ ->
         NavHost(
             navController = navController,
             startDestination = Screen.Home.route
         ) {
             composable(Screen.Home.route) {
-                ContentA()
+                ContentRed("Home screen")
             }
-            composable(Screen.Library.route) {
-                ContentB()
+            composable(Screen.ChatList.route) {
+                ContentGreen("Chat list screen"){
+                    Button(onClick = {}) {
+                        Text("Go to conversation")
+                    }
+                }
             }
-            composable(Screen.Settings.route) {
-                SampleContent()
+            composable(Screen.Camera.route) {
+                ContentPurple("Camera screen")
             }
         }
     }
